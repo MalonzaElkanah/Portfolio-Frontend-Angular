@@ -1,0 +1,15 @@
+.blog-image {
+    /* background-image: url("{{main_feature.image.url}}"); */
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.blog-image-cover {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}

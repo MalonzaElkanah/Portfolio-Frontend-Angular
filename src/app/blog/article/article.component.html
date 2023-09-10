@@ -1,0 +1,40 @@
+<div class="row">
+    <!-- Article-Post Section Start -->
+    <div class="col-md-9">
+        <app-post *ngIf="article" [article]="article"></app-post>
+        <app-comments *ngIf="article?.comments" [comments]="article?.comments"></app-comments>
+    </div>
+    <!-- /Article-Post Section Ends -->
+
+    <!-- Writer-Info Section Start -->
+    <div class="col-md-3">
+        <app-profile></app-profile>
+    </div>
+    <!-- /Writer-Info Section Ends -->
+</div>
+
+<!-- Featured-Post Section Start -->
+<div class="row mb-2 pt-5">
+	<div class="col-12" *ngIf="series_articles?.length ?? 0 > 0">
+        <div class="row text-center p-4">
+            <h3>In this Series</h3>
+        </div>
+        <div class="row">
+        	<div class="col-md-6" *ngFor="let article of series_articles">
+        		<app-horizontal-card [article]="article"></app-horizontal-card>
+        	</div>
+        </div>
+    </div>
+
+    <div class="col-12" *ngIf="articles?.length ?? 0 > 0">
+        <div class="row text-center p-4">
+            <h3>Other Articles</h3>
+        </div>
+        <div class="row">
+        	<div class="col-md-6" *ngFor="let article of articles">
+        		<app-horizontal-card [article]="article"></app-horizontal-card>
+        	</div>
+        </div>
+    </div>
+</div>
+<!-- /Featured-Post Section Ends -->

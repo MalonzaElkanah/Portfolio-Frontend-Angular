@@ -1,0 +1,58 @@
+<!-- Blo-Post Section Start -->
+    <div class="row g-5 pt-3">
+        <!-- Article-Post Section Start -->
+        <div class="col-md-8">
+            <div class="row text-center p-4">
+                <h3>My Projects </h3>
+            </div>
+            <div  *ngIf="projects?.count" class="row pb-2 d-flex justify-content-between">
+                <h5 class="col ms-2">{{pageTitle}}: <span class="reviews-count text-muted">Page {{projects?.previous+1 ?? 1}} ({{projects?.count}} Projects)</span></h5>
+            </div>
+
+            <div class="row" *ngIf="projects?.results">
+            	<app-card *ngFor="let project of projects?.results" [project]="project"></app-card>
+            </div>
+            <div *ngIf="projects?.count === 0" class="row text-center pt-3" #noProjects>
+                 <p class="text-muted"> No Projects Available</p>
+            </div>
+            <div *ngIf="projects?.count" class="row pt-3">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <ng-container *ngIf="projects?.previous; else noPrevious">
+                                <a href="#" (click)="pageProjects(projects?.previous)" class="page-link">Previous</a>
+                            </ng-container>
+                            <ng-template #noPrevious>
+                                <a href="#" (click)="pageProjects(projects?.previous)" class="page-link disabled">Previous</a>
+                            </ng-template>
+                        </li>
+                        <li class="page-item active">
+                            <ng-container *ngIf="projects?.previous; else noCurrent">
+                                <a class="page-link">{{projects?.previous+1}}</a>
+                            </ng-container>
+                            <ng-template #noCurrent>
+                                <a class="page-link" href="#">1</a>
+                            </ng-template>
+                        </li>
+                        <li class="page-item">
+                            <ng-container *ngIf="projects?.next; else noNext">
+                                <a href="#" (click)="pageProjects(projects?.next)" class="page-link">Next</a>
+                            </ng-container>
+                            <ng-template #noNext>
+                                <a href="#" (click)="pageProjects(projects?.next)" class="page-link disabled">Next</a>
+                            </ng-template>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /Article-Post Section Ends -->
+
+        <!-- Writer-Info Section Start -->
+        <div class="col-md-4">
+            <app-side-nav [pageTitle]="pageTitle" (newProjectEvent)="newProjects($event)" (newpageTitleEvent)="newpageTitle($event)"></app-side-nav>
+        </div>
+        <!-- /Writer-Info Section Ends -->
+
+    </div>
+<!-- /Blog-Post Section End -->

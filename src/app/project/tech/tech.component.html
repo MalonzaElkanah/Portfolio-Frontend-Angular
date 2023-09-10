@@ -1,0 +1,25 @@
+<!-- Blo-Post Section Start -->
+    <div class="row g-5 pt-3">
+        <!-- Article-Post Section Start -->
+        <div class="col-md-8">
+            <div class="row text-center p-4">
+                <h3>{{ keyword }} {{pageTitle}}</h3>
+            </div>
+
+            <div class="row">
+            	<app-card *ngFor="let project of projects" [project]="project"></app-card>
+            </div>
+            <div *ngIf="projects === undefined" class="row text-center pt-3" #noProjects>
+                 <p class="text-muted"> No Projects Available</p>
+            </div>
+        </div>
+        <!-- /Article-Post Section Ends -->
+
+        <!-- Writer-Info Section Start -->
+        <div class="col-md-4">
+            <app-side-nav [pageTitle]="pageTitle" [keyword]="keyword" (newKeywordProjectEvent)="newProjects($event)" (newKeywordEvent)="newKeyword($event)" (newpageTitleEvent)="newpageTitle($event)"></app-side-nav>
+        </div>
+        <!-- /Writer-Info Section Ends -->
+
+    </div>
+<!-- /Blog-Post Section End -->

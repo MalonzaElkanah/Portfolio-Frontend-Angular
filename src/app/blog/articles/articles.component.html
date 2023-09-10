@@ -1,0 +1,65 @@
+<!-- Blo-Post Section Start -->
+<div class="row g-5 pt-3">
+    <!-- Article-Post Section Start -->
+    <div class="col-md-8">
+        <div class="row text-center p-4">
+            <h3>All Posts</h3>
+        </div>
+        
+        <div  *ngIf="articles?.count" class="row pb-2 d-flex justify-content-between">
+            <h5 class="col ms-2">{{title}}: <span class="reviews-count text-muted">Page {{articles?.previous+1 ?? 1}} ({{articles?.count}} Articles)</span></h5>
+        </div>
+
+        <ng-container class="row" *ngIf="articles; else noArticle">
+        	<div class="col-12" *ngFor="let article of articles?.results">
+        		<app-horizontal-card [article]="article"></app-horizontal-card>
+        	</div>
+        </ng-container>
+
+        <ng-template class="text-center pt-3" #noArticle>
+             <p class="text-muted"> No post Available</p>
+        </ng-template>
+
+
+        <div class="row pt-3">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+
+                    <li class="page-item">
+                        <ng-container *ngIf="articles?.previous; else noPrevious">
+                            <a href="#" class="page-link">Previous</a>
+                        </ng-container>
+                        <ng-template #noPrevious>
+                            <a href="#" class="page-link disabled">Previous</a>
+                        </ng-template>
+                    </li>
+                    <li class="page-item active">
+                        <ng-container *ngIf="articles?.previous; else noCurrent">
+                            <a class="page-link">{{articles?.previous+1}}</a>
+                        </ng-container>
+                        <ng-template #noCurrent>
+                            <a class="page-link" href="#">1</a>
+                        </ng-template>
+                    </li>
+                    <li class="page-item">
+                        <ng-container *ngIf="articles?.next; else noNext">
+                            <a href="#" class="page-link">Next</a>
+                        </ng-container>
+                        <ng-template #noNext>
+                            <a href="#" class="page-link disabled">Next</a>
+                        </ng-template>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- /Article-Post Section Ends -->
+
+    <!-- Writer-Info Section Start -->
+    <div class="col-md-4">
+        <app-search (newArticleEvent)="newArticles($event)"></app-search>
+    </div>
+    <!-- /Writer-Info Section Ends -->
+</div>
+<!-- /Blog-Post Section End -->

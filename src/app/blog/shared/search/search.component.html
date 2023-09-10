@@ -1,0 +1,42 @@
+<div class="position-sticky border shadow" style="top: 4rem;">
+    <div class="p-4 mb-3 bg-light rounded border-bottom">
+
+        <div class="row">
+            <div class="col-12">
+                <h5>Search In {{keyword}} Articles</h5>
+            </div>
+            <div class="col-12 pb-5">
+                <form [formGroup]="searchForm" (ngSubmit)="searchArticles(searchInput.value)">
+                    <div class="mb3 pb-3">
+                        <input class="form-control" type="text" formControlName="search" #searchInput>
+                    </div>
+                    <button class="btn btn-outline-dark" type="button" (click)="searchArticles(searchInput.value)">Search</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="p-4">
+        <h4>Category</h4>
+        <ol class="list-unstyled text-decoration-none">
+            <li *ngFor="let item of category?.results"><a *ngIf="item" [routerLink]="['/blog/category/articles', slugify(item.name), binarify(item.id)]" class="text-decoration-none" (click)="getCategoryArticles(item.id, item.name)">{{item?.name}} ({{item?.article_count}})</a></li>
+        </ol>
+    </div>
+
+    <div class="p-4">
+        <h4>Top Series</h4>
+        <ol class="list-unstyled text-decoration-none">
+            <li *ngFor="let item of series?.results"><a *ngIf="item" [routerLink]="['/blog/series/articles', slugify(item.name), binarify(item.id)]" class="text-decoration-none" (click)="getSeriesArticles(item.id, item.name)">{{item?.name}} ({{item?.article_count}})</a></li>
+        </ol>
+    </div>
+
+    <!-- div class="p-4">
+        <h4 class="fst-italic">Archives</h4>
+        <ol class="list-unstyled mb-0">
+            <li><a href="#" class="text-decoration-none">July, 2022</a></li>
+            <li><a href="#" class="text-decoration-none">August, 2022</a></li>
+        </ol>
+    </div -->
+
+</div>

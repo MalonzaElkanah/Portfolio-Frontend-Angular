@@ -1,0 +1,27 @@
+<!-- Blo-Post Section Start -->
+<div class="row g-5 pt-3">
+    <!-- Article-Post Section Start -->
+    <div class="col-md-8">
+        <div class="row text-center p-4">
+            <h3>{{title}} Articles</h3>
+        </div>
+
+        <ng-container class="row" *ngIf="articles; else noArticle">
+        	<div class="col-12" *ngFor="let article of articles">
+        		<app-horizontal-card [article]="article"></app-horizontal-card>
+        	</div>
+        </ng-container>
+
+        <ng-template class="text-center pt-3" #noArticle>
+             <p class="text-muted"> No post Available</p>
+        </ng-template>
+    </div>
+    <!-- /Article-Post Section Ends -->
+
+    <!-- Writer-Info Section Start -->
+    <div class="col-md-4">
+        <app-search (newCategoryArticleEvent)="getCategoryArticles($event)" (newCategoryEvent)="newCategory($event)" [categoryObject]="category" (newSearchEvent)="newTitle($event)" [keyword]="category?.name ?? ''"></app-search>
+    </div>
+    <!-- /Writer-Info Section Ends -->
+</div>
+<!-- /Blog-Post Section End -->

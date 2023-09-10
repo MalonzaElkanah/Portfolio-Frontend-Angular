@@ -1,0 +1,53 @@
+<!-- Content Section -->
+<main class="container main-index pt-4">
+
+    <!-- Banner Section Start -->
+    <div id="profile-banner" class="row align-items-center section-height">
+        <div class="col-md-6" *ngIf="profile">
+
+            <div class="row">
+                <p><span id="intro-pill" class="fs-5 badge bg-primary">Hello, I'm </span></p>
+                <h1 class="display-3">{{ profile.first_name }} {{profile.second_name}}</h1>
+                <h3>Web Developer</h3>
+            </div>
+            <div class="row pt-3">
+                <p>
+                    <i class="fas fa-at"></i>
+                    <a href="mailto:{{profile.email_1}}" class="ms-3 text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">{{profile.email_1}}</a>
+                </p>
+                <p>
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="telto:{{profile.phone_number_1}}" class="ms-3 text-decoration-none text-dark">{{profile.phone_number_1}}</a>
+                </p>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a href="#" class="ms-3 text-decoration-none text-dark">{{profile.address}}</a>
+                </p>
+            </div>
+            <div class="row pt-3">
+                <div class="col-12">
+                    <span *ngFor="let social of profile?.social_links" class="mx-1">
+                    <a href="{{social.url}}" class="btn btn-outline-dark"><i class="{{social.logo}}"> </i> </a> 
+                    </span> 
+                </div>
+            </div>
+        </div>
+        <div *ngIf="profile" class="col-md-6">
+            <div class="row text-center pb-4">
+                <div class="ratio ratio-1x1 rounded-circle w-75 banner-profile-div">
+                <!--malonza.JPG  -->
+                <img src="{{profile.image}}" class="ratio ratio-1x1 rounded-circle banner-profile-img" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Banner Section Ends -->
+    <app-about-me *ngIf="profile" [profile]="profile"></app-about-me>
+    <app-service *ngIf="profile?.services" [services]="profile?.services"></app-service>
+    <app-skill *ngIf="profile?.technical_skills" [technical_skills]="profile?.technical_skills"></app-skill>
+    <app-experience *ngIf="profile?.education" [education_profile]="profile?.education" [work_profile]="profile?.work"></app-experience>
+    <app-project *ngIf="profile?.project_highlights" [projects]="profile?.project_highlights"></app-project>
+    <app-pricing *ngIf="profile?.pricing" [pricing]="profile?.pricing"></app-pricing>
+    <app-blog *ngIf="profile?.article_highlights" [articles]="profile?.article_highlights"></app-blog>
+    <app-contact *ngIf="profile" [profile]="profile"></app-contact>
+</main>

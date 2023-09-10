@@ -1,0 +1,22 @@
+<!-- Service Section -->
+<div id="section-service" class="row align-items-center section-height">
+    <div class="col-12">
+        <div class="row text-center pb-2 pt-4">
+            <h2>What I DO</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 pb-3" *ngFor="let service of services">
+                <div class="card shadow bg-body rounded">
+                    <div class="card-body">
+                        <div class="row py-3">
+                            <i [ngClass]="[chooseColorClass(service.id)]" class="{{service.logo}} fa-2x {% cycle 'text-success' 'text-primary' 'text-danger' %}"></i>
+                        </div>
+                        <h3 class="card-title">{{service.name}}</h3>
+                        <p class="card-text">{{service.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Service Section Ends -->

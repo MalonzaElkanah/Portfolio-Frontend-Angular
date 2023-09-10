@@ -1,0 +1,101 @@
+<!-- Contact-Me Section -->
+<div id="section-contact" class="row align-items-center section-height">
+	<div class="col-12 pt-4">
+		<div class="row text-center pb-2">
+    		<h3>Contact Me</h3>
+    	</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row pb-3">
+    				<div class="card shadow bg-body rounded">
+    					<div class="card-body">
+	        				<div class="row">
+	        					<div class="col-3 col-md-4 text-center">
+	        						<div class="row align-items-center pt-4">
+	        							<div class="">
+	        								<i class="fas fa-paper-plane fa-3x"></i>
+	        							</div>
+	        						</div>
+	        					</div>
+	        					<div class="col-9 col-md-8">
+	        						<div class="row"><h5>Address</h5></div>
+	        						<div class="row"><p>{{profile?.address}}<br><a href="map view"></a> </p></div>
+
+	        					</div>
+	        				</div>
+	        			</div>
+    				</div>
+				</div>
+
+				<div class="row pb-3">
+    				<div class="card shadow bg-body rounded">
+    					<div class="card-body">
+	        				<div class="row">
+	        					<div class="col-3 col-md-4 text-center">
+	        						<div class="row align-items-center pt-4">
+	        							<div class="">
+	        								<i class="fas fa-envelope fa-3x"></i>
+	        							</div>
+	        						</div>
+	        					</div>
+	        					<div class="col-9 col-md-8">
+	        						<div class="row"><h5>Email</h5></div>
+	        						<div class="row"><p>{{profile?.email_1}}<br>{{profile?.email_2}}</p></div>
+
+	        					</div>
+	        				</div>
+	        			</div>
+    				</div>
+				</div>
+
+				<div class="row pb-3">
+    				<div class="card shadow bg-body rounded">
+    					<div class="card-body">
+	        				<div class="row">
+	        					<div class="col-3 col-md-4 text-center">
+	        						<div class="row align-items-center pt-4">
+	        							<div class="">
+	        								<i class="fas fa-phone-alt fa-3x"></i>
+	        							</div>
+	        						</div>
+	        					</div>
+	        					<div class="col-9 col-md-8">
+	        						<div class="row"><h5>Phone</h5></div>
+	        						<div class="row"><p>{{profile?.phone_number_1}}<br>{{profile?.phone_number_2}}</p></div>
+
+	        					</div>
+	        				</div>
+	        			</div>
+    				</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-6">
+				<div class="row">
+					<form [formGroup]="contactForm" (submit)="submitContactForm()">
+    					<div class="mb-3">
+						 	<input type="text" class="form-control form-control-lg" formControlName="first_name" placeholder="First Name">
+						</div>
+						<div class="mb-3">
+						 	<input type="text" class="form-control form-control-lg" formControlName="last_name" placeholder="Last Name">
+						</div>
+    					<div class="mb-3">
+						 	<input type="email" class="form-control form-control-lg" formControlName="email" placeholder="Your Email">
+						</div>
+
+						<div class="mb-3">
+						  	<textarea class="form-control" formControlName="message" rows="5" placeholder="Message Here"></textarea>
+						  	<div id="formHelp" class="form-text text-danger" *ngIf="isFailed">{{errorMessage}}</div>
+						</div>
+						<div class="col-12 d-grid gap-2">
+							<button type="submit" class="btn btn-primary">SEND MESSAGE</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- /Contact-Me Section Ends -->

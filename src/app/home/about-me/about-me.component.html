@@ -1,0 +1,27 @@
+<!-- About-Me Section -->
+<div id="section-about" class="row align-items-center section-height">
+	<div class="col-md-6">
+		<img src="assets/canvas.png" class="ratio ratio-1x1 w-75">
+	</div>
+	<div class="col-md-6">
+		<div class="row">
+			<h3>About Me</h3>
+			<p>{{profile?.description}} I am good at</p>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<span *ngFor="let skill of profile?.skills">
+					<span *ngFor="let keyword of skill?.keywords" class="mx-1">
+						<a href="#" class="btn btn-outline-primary disabled my-1">{{keyword?.name}}</a>
+					</span>
+				</span>
+			</div>
+		</div>
+		<div class="row pt-3">
+			<div class="col-12">
+				<a href="{{profile?.cv_file}}" class="btn btn-primary">Download CV <i class="fas fa-file-download"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /About-Me Section Ends -->

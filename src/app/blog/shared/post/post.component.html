@@ -1,0 +1,15 @@
+<article class="blog-post pt-4">
+    <h1 class="blog-post-title my-4">{{article?.title}}</h1>
+    <p class="blog-post-meta text-muted">Published On {{ article?.date_created | date: 'MMMM dd, YYYY' }}</p>
+    <div class="">
+        <a href="#" class="m-1" *ngFor="let tag of article?.tags?.split(',')">
+            <span class="h5 badge bg-secondary">{{tag}}</span>
+        </a>
+    </div>
+    <div class="my-2">
+        <p class="blog-post-meta text-muted">By <a href="#" class="text-decoration-none">{{article?.user?.first_name}} {{article?.user?.last_name}}</a></p> 
+    </div>
+    <div class="my-4 rounded bg-dark blog-image" style="background-image: url('{{article?.image}}');"></div>
+
+    <p class="lead" [innerHTML]="article?.content"></p>
+</article>

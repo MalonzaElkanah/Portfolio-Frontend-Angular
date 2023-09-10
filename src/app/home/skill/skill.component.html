@@ -1,0 +1,44 @@
+<!-- Skills Section -->
+<div id="section-skills" class="row align-items-center section-height">
+	<div class="col-12">
+		<div class="row pt-4">
+        	<div class="col-md-6">
+        		<div class="row  text-center pb-2">
+        			<h3>Technical Skills</h3>
+        		</div>
+        		<div class="row">
+        			<div class="col-12 pb-5" *ngFor="let tech of technical_skills">
+        				<div class="row justify-content-between">
+        					<div class="col">{{tech?.skill_keyword}}</div>
+        					<div class="col text-end">{{tech?.percentage}}%</div>
+        				</div>
+        				<div class="progress" style="height: 7px;">
+						  	<div class="progress-bar" style="width: {{tech?.percentage}}%" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+						  	<!--aria-valuenow="{{tech?.percentage}}"-->
+						</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="col-md-6">
+        		<div class="row text-center pb-2">
+        			<h3>Professional Skills</h3>
+        		</div>
+        		<div class="row">
+        			<div class="col-6" *ngFor="let chartOption of chartOptions">
+        				<div id="chart{{chartOptions.indexOf(chartOption)}}" class="align-self-center">
+	    					<apx-chart
+								[series]="chartOption.series"
+								[chart]="chartOption.chart"
+								[labels]="chartOption.labels"
+								[colors]="chartOption.colors"
+								[plotOptions]="chartOption.plotOptions"
+								[stroke]="chartOption.stroke"
+								></apx-chart>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+	</div>
+</div>
+<!-- /Skills Section Ends -->

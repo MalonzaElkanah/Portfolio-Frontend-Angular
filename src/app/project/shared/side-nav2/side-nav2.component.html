@@ -1,0 +1,48 @@
+<div class="position-sticky" style="top: 4rem;">
+    <!-- div class="p-4 mb-3 bg-light rounded border-bottom">
+        <div class="text-center pb-4">
+          <img src="#" class="w-25 rounded-circle" alt="...">
+        </div>
+        <div class="text-center pb-4">
+            <h5>Elkanah Malonza</h5>
+            <strong>Computer Programmer</strong>
+        </div>
+        <div class="text-center pb-4">
+            <p class="mb-0">The firewalld daemon manages groups of rules using entities called zones. Zones are sets of rules that dictate what traffic should be allowed depending on the level of trust you have in the network. Network interfaces are assigned to a zone to dictate the behavior that the firewall should allow.</p>
+        </div>
+        <div class="text-center">
+            <a href="#" class="btn btn-outline-dark"><i class="#"></i></a>
+            <a href="#" class="btn btn-outline-dark"><i class="#"></i></a>
+            <a href="#" class="btn btn-outline-dark"><i class="#"></i></a>
+        </div>
+    </div>
+    <div class="p-4 mb-3 bg-light rounded border-bottom">
+
+        <div class="row">
+            <div class="col-8">
+                <h5>Search Project</h5>
+            </div>
+            <div class="col-12 pb-5">
+                <form method="get" action="#">
+                <div class="mb3 pb-3">
+                    <input class="form-control" type="text" name="search">
+                </div>
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div -->
+
+    <div class="p-4">
+        <h4>Tech-Stack</h4>
+        <ol class="list-unstyled text-decoration-none">
+            <li *ngFor="let keyword of keywords?.results"><a *ngIf="keyword" [routerLink]="['/projects/keywords', keyword.technology]" class="text-decoration-none">{{keyword?.technology}}</a></li>
+        </ol>
+    </div>
+    <div class="p-4" *ngIf="projects">
+        <h4>Recent Projects</h4>
+        <ol class="list-unstyled text-decoration-none">
+            <li *ngFor="let project of projects.results"><a [routerLink]="['/projects', slugify(project.name), binarify(project.id)]" class="text-decoration-none">{{project.name}}</a></li>
+        </ol>
+    </div>
+</div>

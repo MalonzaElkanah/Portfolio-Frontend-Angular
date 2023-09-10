@@ -1,0 +1,45 @@
+<div class="row p-4">
+    <div class="col-12 text-center h4 pb-2">Comment</div>
+    <form [formGroup]="commentForm" (submit)="submitCommentForm()">
+        <div class="mb-3">
+            <input type="text" class="form-control form-control" formControlName="name" placeholder="Displayed Name">
+        </div>
+        <div class="mb-3">
+            <input type="email" class="form-control form-control" formControlName="email" placeholder="Email (Not Displayed)">
+        </div>
+
+        <div class="mb-3">
+            <textarea class="form-control" formControlName="message" rows="5" placeholder="Message Here"></textarea>
+        </div>
+        <div class="col-12 d-grid gap-2">
+            <button type="submit" class="btn btn-primary">COMMENT</button>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="comments?.length ?? 0 > 0" class="row p-4">
+    <div class="text-center pb-3 h4"> Comments</div>
+
+    <div class="row">
+        <div class="card mb-3 bg-light" *ngFor="let comment of comments">
+            <div class="row g-0 align-items-center pt-2">
+                <div class="col-2 col-lg-1 text-center">
+                    <img src="assets/profile.png" class="w-75 rounded-circle" alt="...">
+                </div>
+                <div class="col-10">
+                    <h5 class="card-title">{{comment.name}}</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-body">
+                    <p class="card-text">{{comment.message}}</p>
+                    <p class="card-text"><small class="text-muted"> {{comment.date_created | date: 'MMMM dd, YYYY' }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--div class="row text-center">
+        <a href="#">more comments..</a>
+    </div-->
+</div>

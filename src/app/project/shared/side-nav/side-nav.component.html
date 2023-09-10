@@ -1,0 +1,25 @@
+<div class="position-sticky border shadow" style="top: 4rem;">
+    <div class="p-4 mb-3 bg-light rounded border-bottom">
+
+        <div class="row">
+            <div class="col-12">
+                <h5>Search in {{keyword}} Projects</h5>
+            </div>
+            <div class="col-12 pb-5">
+                <form [formGroup]="searchForm" (ngSubmit)="searchProjects(searchInput.value)">
+                    <div class="mb3 pb-3">
+                        <input class="form-control" type="text" formControlName="search" #searchInput>
+                    </div>
+                    <button class="btn btn-outline-dark" type="button" (click)="searchProjects(searchInput.value)">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-4">
+        <h4>Tech-Stack</h4>
+        <ol class="list-unstyled text-decoration-none">
+            <li *ngFor="let keyword of keywords?.results"><a *ngIf="keyword" [routerLink]="['/projects/keywords', keyword.technology]" class="text-decoration-none" (click)="getKeywordProjects(keyword.technology)">{{keyword?.technology}}</a></li>
+        </ol>
+    </div>
+</div>
