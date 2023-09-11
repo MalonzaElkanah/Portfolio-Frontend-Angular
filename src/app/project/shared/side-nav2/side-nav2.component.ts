@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { KeywordList, ProjectList } from '../../project';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { KeywordList, ProjectList, Project } from '../../project';
 import { ProjectService } from '../../project.service';
 
 
@@ -12,6 +12,8 @@ export class SideNav2Component {
   keywords: KeywordList | undefined;
   projects: ProjectList | undefined;
 
+  @Output() newProjectEvent = new EventEmitter<Project>();
+
   constructor(private projectService: ProjectService) {
     this.projectService.getAllKeywords().subscribe((keywords: KeywordList) => {
       this.keywords = keywords;
@@ -19,6 +21,14 @@ export class SideNav2Component {
 
     this.projectService.getAllProjects(undefined, 1).subscribe((projects: ProjectList) => {
       this.projects = projects;
+    });
+  }
+
+  getProject(project: number): void {
+    // this.newKeywordProjectEvent.emit(undefined);
+
+    this.projectService.getProject(project).subscribe((project: Project) => {
+      this.newProjectEvent.emit(project);
     });
   }
 

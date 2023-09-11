@@ -44,4 +44,8 @@ export class DetailComponent implements OnInit {
       alert("Project Not Found.");
     }
   }
+
+  newProject(project: Project){
+    this.project = project;    
+  }
 }

@@ -42,7 +42,7 @@
     <div class="p-4" *ngIf="projects">
         <h4>Recent Projects</h4>
         <ol class="list-unstyled text-decoration-none">
-            <li *ngFor="let project of projects.results"><a [routerLink]="['/projects', slugify(project.name), binarify(project.id)]" class="text-decoration-none">{{project.name}}</a></li>
+            <li *ngFor="let project of projects.results"><a [routerLink]="['/projects', slugify(project.name), binarify(project.id)]" class="text-decoration-none" (click)="getProject(project.id)">{{project.name}}</a></li>
         </ol>
     </div>
 </div>
