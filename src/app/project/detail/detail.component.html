@@ -48,7 +48,7 @@
         <div class="col-md-9 card bg-light border">
             <div class="row card-body">
                 <h3 class="card-title">About</h3>
-                <p class="card-text">{{project?.description}}</p>
+                <p class="card-text" [innerHTML]="project?.description"></p>
 
                 <div class="col-12">
                     <span class="badge bg-primary m-1" *ngFor="let keyword of project?.keywords?.slice(0,7)">{{ keyword?.technology }}</span>
