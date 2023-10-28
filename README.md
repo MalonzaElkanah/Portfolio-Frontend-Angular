@@ -1,4 +1,5 @@
 # Malone
+[![Netlify Status](https://api.netlify.com/api/v1/badges/87e93644-7bf2-4fdc-b5f6-a37d92ccc2ec/deploy-status)](https://app.netlify.com/sites/elkanahmalonza/deploys)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
