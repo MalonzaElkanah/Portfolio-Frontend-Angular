@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import PhotoSwipe from 'photoswipe';
 
 import { Project, ProjectList } from '../project';
 import { ProjectService } from '../project.service';
@@ -12,38 +10,18 @@ import { ProjectService } from '../project.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  project: Project | undefined;
-
-  settings = {
-    counter: false
-  };
+  project!: Project;
 
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute
-  ) { }
-
-  ngOnInit(): void {
-    const routeId = this.route.snapshot.params['id'];
-    const projectId = parseInt(atob(routeId), 10);
-
-    if (projectId){
-
-      this.projectService.getProject(projectId).subscribe((project: Project) => {
-        this.project = project;
-        
-        const lightbox = new PhotoSwipeLightbox({
-          gallery: '#aniimated-thumbnials',
-          children: 'a',
-          pswpModule: PhotoSwipe,
-        });
-
-        lightbox.init();
-      });
-    } else {
-      alert("Project Not Found.");
-    }
+  ) {
+    this.route.data.subscribe((data) => {
+      this.project = data["project"];
+    });
   }
+
+  ngOnInit(): void { }
 
   newProject(project: Project){
     this.project = project;    

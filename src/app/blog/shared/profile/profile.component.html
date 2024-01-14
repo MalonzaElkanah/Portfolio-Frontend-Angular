@@ -21,14 +21,14 @@
     <div class="p-4">
         <h4>Category</h4>
         <ol class="list-unstyled text-decoration-none">
-            <li *ngFor="let item of category?.results"><a *ngIf="item" [routerLink]="['/blog/category/articles', slugify(item.name), binarify(item.id)]" class="text-decoration-none">{{item?.name}} ({{item?.article_count}})</a></li>
+            <li *ngFor="let item of category?.results"><a *ngIf="item?.article_count ?? 0 > 0" [routerLink]="['/blog/category/articles', slugify(item.name), binarify(item.id)]" class="text-decoration-none">{{item?.name}} ({{item?.article_count}})</a></li>
         </ol>
     </div>
 
     <div class="p-4">
         <h4>Top Series</h4>
         <ol class="list-unstyled text-decoration-none">
-            <li *ngFor="let item of series?.results"><a *ngIf="item" [routerLink]="['/blog/series/articles', slugify(item.name), binarify(item.id)]" class="text-decoration-none">{{item?.name}} ({{item?.article_count}})</a></li>
+            <li *ngFor="let item of series?.results"><a *ngIf="item?.article_count ?? 0 >= 1" [routerLink]="['/blog/series/articles', slugify(item.name), binarify(item.id)]" class="text-decoration-none">{{item?.name}} ({{item?.article_count}})</a></li>
         </ol>
     </div>
 

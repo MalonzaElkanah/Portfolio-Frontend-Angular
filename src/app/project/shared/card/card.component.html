@@ -10,10 +10,10 @@
                     <p class="card-text text-success">
                         <span *ngFor="let keyword of project.keywords?.slice(0,7)">{{ keyword.technology }}, </span>
                     </p>
-                    <p class="mb-auto">{{ project.description?.slice(0,127) }}...</p>
+                    <p class="mb-auto">{{ project.description_text?.slice(0,127) }}...</p>
                     <div class="row justify-content-between">
                         <div class="col"><small class="text-muted"> {{ project.date | date: 'MMMM dd, YYYY' }}</small></div>
-                        <div class="col text-end"><a [routerLink]="['/projects', slugify(project.name), binarify(project.id)]"  class="btn btn-primary">Details</a></div>
+                        <div class="col text-end"><a [routerLink]="['/projects/view', slugify(project.name), binarify(project.id)]"  class="btn btn-primary">Details</a></div>
                     </div>
                 </div>
             </div>

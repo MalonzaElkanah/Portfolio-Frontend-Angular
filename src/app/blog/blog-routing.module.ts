@@ -7,12 +7,14 @@ import { ArticleComponent } from './article/article.component';
 import { CategoryComponent } from './category/category.component';
 import { SeriesComponent } from './series/series.component';
 
+import { blogResolver } from './blog.resolver';
+
 const routes: Routes = [
-  { path: 'blog', component: HomeComponent },
-  { path: 'blog/articles', component: ArticlesComponent },
-  { path: 'blog/series/articles/:slug/:id', component: SeriesComponent },
-  { path: 'blog/category/articles/:slug/:id', component: CategoryComponent },
-  { path: 'blog/articles/:slug/:id', component: ArticleComponent }
+  { path: '', component: HomeComponent },
+  { path: 'articles', component: ArticlesComponent },
+  { path: 'series/articles/:slug/:id', component: SeriesComponent },
+  { path: 'category/articles/:slug/:id', component: CategoryComponent },
+  { path: 'articles/:slug/:id', component: ArticleComponent, resolve: { article: blogResolver } }
 ];
 
 @NgModule({

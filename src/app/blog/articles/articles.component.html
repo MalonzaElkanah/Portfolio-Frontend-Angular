@@ -7,7 +7,7 @@
         </div>
         
         <div  *ngIf="articles?.count" class="row pb-2 d-flex justify-content-between">
-            <h5 class="col ms-2">{{title}}: <span class="reviews-count text-muted">Page {{articles?.previous+1 ?? 1}} ({{articles?.count}} Articles)</span></h5>
+            <h5 class="col ms-2">{{title}}: <span class="reviews-count text-muted">{{articles?.count}} Articles</span></h5>
         </div>
 
         <ng-container class="row" *ngIf="articles; else noArticle">
@@ -27,26 +27,21 @@
 
                     <li class="page-item">
                         <ng-container *ngIf="articles?.previous; else noPrevious">
-                            <a href="#" class="page-link">Previous</a>
+                            <a href="javascript:void(0);" class="page-link" (click)="pageArticles(articles?.previous)">Previous</a>
                         </ng-container>
                         <ng-template #noPrevious>
-                            <a href="#" class="page-link disabled">Previous</a>
+                            <a href="javascript:void(0);" class="page-link disabled">Previous</a>
                         </ng-template>
                     </li>
                     <li class="page-item active">
-                        <ng-container *ngIf="articles?.previous; else noCurrent">
-                            <a class="page-link">{{articles?.previous+1}}</a>
-                        </ng-container>
-                        <ng-template #noCurrent>
-                            <a class="page-link" href="#">1</a>
-                        </ng-template>
+                        <a class="page-link" href="javascript:void();">X</a>
                     </li>
                     <li class="page-item">
                         <ng-container *ngIf="articles?.next; else noNext">
-                            <a href="#" class="page-link">Next</a>
+                            <a href="javascript:void(0);" (click)="pageArticles(articles?.next)" class="page-link">Next</a>
                         </ng-container>
                         <ng-template #noNext>
-                            <a href="#" class="page-link disabled">Next</a>
+                            <a href="javascript:void(0);" class="page-link disabled">Next</a>
                         </ng-template>
                     </li>
 
@@ -58,7 +53,7 @@
 
     <!-- Writer-Info Section Start -->
     <div class="col-md-4">
-        <app-search (newArticleEvent)="newArticles($event)"></app-search>
+        <app-search (newArticleEvent)="newArticles($event)" (searchEvent)="newSearchKeyword($event)" (newSearchEvent)="newTitle($event)"></app-search>
     </div>
     <!-- /Writer-Info Section Ends -->
 </div>

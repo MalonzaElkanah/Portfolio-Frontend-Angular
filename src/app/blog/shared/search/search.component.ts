@@ -33,6 +33,7 @@ export class SearchComponent {
   @Output() newCategoryArticleEvent = new EventEmitter<[Article]>();
   @Output() newCategoryEvent = new EventEmitter<Category>();
   @Output() newSearchEvent = new EventEmitter<string>();
+  @Output() searchEvent = new EventEmitter<string>();
 
   constructor(private blogService: BlogService){
     this.blogService.getAllCategories().subscribe((category: CategoryList) => {
@@ -45,6 +46,8 @@ export class SearchComponent {
 
   searchArticles(search: string): void {
     // let search = this.searchForm.value.search ?? '';
+    this.searchEvent.emit(search);
+    
     if (this.keyword === "All") {
       this.newArticleEvent.emit(undefined);
       this.newSearchEvent.emit(`Articles: '${search}' Search Results`);

@@ -11,6 +11,7 @@ import { BlogService } from '../blog.service';
 export class ArticlesComponent {
   articles: ArticleList | undefined;
   title = "Articles";
+  search_keyword = '';
 
   constructor(private blogService: BlogService) { }
 
@@ -21,8 +22,21 @@ export class ArticlesComponent {
 
   }
 
+  pageArticles(page: string) {
+    this.blogService.getAllArticles(
+      this.search_keyword,
+      page
+    ).subscribe((articles: ArticleList) => {
+      this.articles = articles;
+    });
+  }
+
   newArticles(articles: ArticleList){
     this.articles = articles;
+  }
+
+  newSearchKeyword(keyword: string) {
+    this.search_keyword = keyword;
   }
 
   newTitle(title: string) {

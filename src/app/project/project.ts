@@ -16,6 +16,7 @@ export interface Project {
 	name: string;
 	date?: Date;
 	description?: string;
+	description_text?: string;
 	url?: string;
 	video_url?: string;
 

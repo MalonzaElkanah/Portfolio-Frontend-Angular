@@ -11,7 +11,7 @@ import { BlogService } from '../blog.service';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-  article: Article | undefined;
+  article!: Article;
   series_articles: Article[] | undefined;
   articles: Article[] | undefined;
 
@@ -19,21 +19,16 @@ export class ArticleComponent implements OnInit {
     private blogService: BlogService,
     private sanitized: DomSanitizer,
     private route: ActivatedRoute
-  ) { }
+  ) {
 
-  ngOnInit(): void {
-    const routeId = this.route.snapshot.params['id'];
-    const articleId = parseInt(atob(routeId), 10);
+    this.route.data.subscribe((data) => {
+      this.article = data["article"];
+      if (this.article.content){
+        this.article.content = this.sanitized.bypassSecurityTrustHtml(this.article.content);
+      }
+    });
 
-    if (articleId){
-      this.blogService.getArticle(articleId).subscribe((article: Article) => {
-        this.article = article;
-        if (this.article?.content){
-          this.article.content = this.sanitized.bypassSecurityTrustHtml(this.article.content);
-        }
-      });
-    } else {
-      alert("Article Not Found.");
-    }
   }
+
+  ngOnInit(): void { }
 }

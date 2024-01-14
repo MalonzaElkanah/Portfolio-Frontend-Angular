@@ -59,15 +59,15 @@ export class BlogService {
         );
     }
 
-    getAllArticles(search?: string, page = 1){
+    getAllArticles(search?: string, page?: string){
         let url = BLOG_API;
 
-        if (page > 1) {
-            url = `${url}?page=${page}`;
+        if (page) {
+            url = page;
         }
 
         if (search) {
-            if (page > 1) {
+            if (page) {
                 url = `${url}&?search=${search}`;
             } else {
                 url = `${url}?search=${search}`;

@@ -2,7 +2,7 @@
     <!-- Article-Post Section Start -->
     <div class="col-md-9">
         <app-post *ngIf="article" [article]="article"></app-post>
-        <app-comments *ngIf="article?.comments" [comments]="article?.comments"></app-comments>
+        <app-comments *ngIf="article?.comments" [comments]="article.comments"></app-comments>
     </div>
     <!-- /Article-Post Section Ends -->
 

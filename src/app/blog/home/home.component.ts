@@ -14,6 +14,7 @@ export class HomeComponent {
 
   article_list: ArticleList | undefined;
   title = "Articles";
+  search_keyword = '';
 
   blogService: BlogService = inject(BlogService);
 
@@ -31,11 +32,24 @@ export class HomeComponent {
     });
   }
 
+  pageArticles(page: string) {
+    this.blogService.getAllArticles(
+      this.search_keyword,
+      page
+    ).subscribe((articles: ArticleList) => {
+      this.article_list = articles;
+    });
+  }
+
   newArticles(articles: ArticleList){
     this.article_list = articles;
   }
   newTitle(title: string) {
     this.title = title;
+  }
+
+  newSearchKeyword(keyword: string) {
+    this.search_keyword = keyword;
   }
 
 }

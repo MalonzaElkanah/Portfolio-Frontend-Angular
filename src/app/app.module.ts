@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { FooterComponent } from './shared/footer/footer.component';
-// import { TodosModule } from './todos/todos.module';
-import { AuthModule } from './auth/auth.module';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 import { httpInterceptorProviders } from './shared/http-interceptors/index';
@@ -33,7 +31,6 @@ import { SharedModule } from './shared/shared.module';
     HomeModule,
     BlogModule,
     ProjectModule,
-    AuthModule,
     AppRoutingModule,
     SharedModule,
   ],

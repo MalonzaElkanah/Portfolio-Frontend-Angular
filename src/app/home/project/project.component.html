@@ -21,7 +21,7 @@
                                 </p>
 							    <div class="row justify-content-between">
 							    	<div class="col"><small class="text-muted">{{project.date}}</small></div>
-							    	<div class="col text-end"><a [routerLink]="['/projects', slugify(project.name), binarify(project.id)]" class="btn btn-primary">Details</a></div>
+							    	<div class="col text-end"><a [routerLink]="['/projects/view', slugify(project.name), binarify(project.id)]" class="btn btn-primary">Details</a></div>
 							    </div>
 
 							</div>
